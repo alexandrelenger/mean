@@ -1,27 +1,33 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-   <head>
-    <meta charset="utf-8"/>
+<html lang="pt-BR" data-ng-app="AppChamados">
+    <head>
+        <meta charset="utf-8"/>
 
-    <title> Curso MEAN</title>
-    <!-- CSS Files-->
-    <link rel="stylesheet" href="./vendor/bootstrap/dist/css/bootstrap.min.css">
+        <title> Curso MEAN</title>
+        <!-- CSS Files-->
+        <link rel="stylesheet" href="./vendor/bootstrap/dist/css/bootstrap.min.css">
 
-    <!-- Script Files-->
-    <script src="./vendor/jquery/dist/jquery.min.js"></script>
-    <script src="./vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-   </head>
+        <!-- Script Files-->
+        <script src="./vendor/angular/angular.min.js"></script>
+        <script src="./vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
 
-   <body>
+        <script src="./vendor/jquery/dist/jquery.min.js"></script>
+        <script src="./vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="./js/main.js"></script>
+
+        <!-- Controllers -->
+        <script src="./js/controllers/HomeController.js"></script>
+    </head>
+
+    <body>
 
       <div class="container">
         <div class="row">
-          <div class="jumbotron text-center">
-            <h1>Olá Mundo!</h1>
-          </div>
+          <div data-ui-view="menu"></div>
+          <div data-ui-view=""></div>
 
         </div>
       </div>
 
-   </body>
+    </body>
 </html>
