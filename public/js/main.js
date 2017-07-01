@@ -6,7 +6,9 @@ app.config(myConfig)
 
 function myConfig($stateProvider, $urlRouterProvider){
 
-  $stateProvider.state('home', {
+  $stateProvider
+
+  .state('home', {
   	url: '/home',
   	views: {
   		'': {
@@ -21,6 +23,20 @@ function myConfig($stateProvider, $urlRouterProvider){
 
   })
   
+  .state('cnsUsuario', {
+    url: '/usuario',
+    views: {
+      '': {
+        templateUrl: './views/cnsUsuario.html',
+        controller: 'UsuarioController',
+        controllerAs: 'vm'
+      },
+      'menu' :{
+        templateUrl: './views/menu.html'
+      }
+    }
+
+  })
 
   $urlRouterProvider.otherwise('/home')
 
