@@ -1,0 +1,88 @@
+<div class="panel panel--default panel-body">
+
+	<div class="row">
+		<div class="col-md-4">
+			<label>Descricao</label>
+			<input type="text" class="form-control" data-ng-model="vm.Produto.descricao">
+		</div>
+
+		<!-- COMO FOI ADICIONADO A INTERNACIONALIZAÇÃO, ATEREI O CAMPO DO TYPE="TEXT" PARA TYPE="NUMBER" -->
+		<div class="col-md-2">
+			<label>Estoque</label>
+			<input type="number" class="form-control" data-ng-model="vm.Produto.estoque">
+		</div>
+
+		<!-- COMO FOI ADICIONADO A INTERNACIONALIZAÇÃO, ATEREI O CAMPO DO TYPE="TEXT" PARA TYPE="NUMBER" -->
+		<div class="col-md-2">
+			<label>Custo</label>
+			<input type="number" class="form-control" data-ng-model="vm.Produto.custo">
+		</div>
+
+		<!-- COMO FOI ADICIONADO A INTERNACIONALIZAÇÃO, ATEREI O CAMPO DO TYPE="TEXT" PARA TYPE="NUMBER" -->
+		<div class="col-md-2">
+			<label>Venda</label>
+			<input type="number" class="form-control" data-ng-model="vm.Produto.venda">
+		</div>
+
+		<div class="col-md-2">
+			   <label>Situação</label>
+			   <select class="form-control" data-ng-model="vm.Produto.situacao">
+			      <option>Ativo</option>
+			      <option>Inativo</option>
+			   </select>
+
+		</div>
+
+
+
+	</div>
+	
+	<div class="row">
+		<div class="col-md-4">
+			<hr>
+			<!-- ###### AGORA O BOTÃO GRAVAR TEM A LOGICA DE INCLUSAO E ALTERAÇÃO -->
+			<button type="button" class="btn  btn-primary" data-ng-click="vm.Gravar()">Gravar</button>
+			
+		</div>
+
+
+	<!-- ##### REMOVIDO O BOTÃO ATUALIZAR POR QUE NAO VAI MAIS PRECISAR ######### -->
+
+		<!-- <div class="col-md-4">
+			<hr>
+			<button type="button" class="btn  btn-primary" data-ng-click="vm.Atualizar()">Atualizar</button>
+			
+		</div>		 -->
+</div>
+
+<div class="panel panel--default panel-body">
+	<table class="table table-striped table-hover">
+		<thead>
+			<tr>
+				<th>Alterar</th>
+				<th>Descricao</th>
+				<th>Estoque</th>
+				<th>Custo</th>
+				<th>Venda</th>
+				<th>Situação</th>
+				<th></th>
+			</tr>
+		</thead>
+
+		<tbody data-ng-init="vm.ListarTodos()">
+			<tr data-ng-repeat="produto in vm.Produtos">
+				<td><a href="#!/produto/{{produto._id}}">Alterar</a></td>
+				<td>{{produto.descricao}}</td>
+				<td>{{produto.estoque}}</td>
+				<td>{{produto.custo}}</td>
+				<td>{{produto.venda}}</td>
+				<td>{{produto.situacao}}</td>
+
+				<td><a href="javascript:void(0)" data-ng-click="vm.Deletar(produto._id)"> <spam class="glyphicon glyphicon-trash"></spam></a></td>
+
+			</tr>
+
+		</tbody>
+	</table>	
+
+</div>

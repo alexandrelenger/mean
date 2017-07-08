@@ -53,34 +53,6 @@ function myConfig($stateProvider, $urlRouterProvider){
 
   })
 
-  // ## ADICIONADO UMA NOVA ROTA ONDE VAI SER PASSADO UM PARAMETRO
-  .state('cnsProdutoAlteracao', {
-    url: '/produto/:id',
-    views: {
-      '': {
-        templateUrl: './views/cnsProduto.html',
-        controller: 'ProdutoController',
-        controllerAs: 'vm'
-      },
-      'menu' :{
-        templateUrl: './views/menu.html'
-      }
-    }
-
-  })
-
-  .state('login', {
-    url: '/login',
-    views: {
-      '': {
-        templateUrl: './views/login.html',
-        controller: 'LoginController',
-        controllerAs: 'vm'
-      }
-    }
-  
-  })
-
   $urlRouterProvider.otherwise('/home')
 
 }

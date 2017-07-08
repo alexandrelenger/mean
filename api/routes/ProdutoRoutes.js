@@ -2,40 +2,16 @@
 
 const express = require('express')
 const router = express.Router()
-const UsuarioModel = require('../models/UsuarioModel')
-
-router.post('/login', (req,res) => {
-  
-  const body = req.body
-
-  const query = { usuario: body.usuario, senha: body.senha }
-
-  UsuarioModel.findOne(query, (err, data) => {    
-
-    if (err) {
-      return res.status(500).json({error: true, message: err})
-    }
-
-    if (data) {
-      return res.status(200).json({error: false, message: 'Usuário Logado com Sucesso'})
-    }else{
-      return res.status(200).json({error: true, message: 'Usuário ou Senha Inválida'})
-    }     
-  })  
- })
-
-// C - Create
-// R - Retrive
-// U - Update
-// D - Delete
+const ProdutoModel = require('../models/ProdutoModel')
 
 
-//create  (CRUD)
+
+//create
 router.post('/create', (req,res) =>{
 
   const body = req.body
 
-  UsuarioModel.create(body, (err, data) => {
+  ProdutoModel.create(body, (err, data) => {
     if (err) return res.status(500).json(err)
       return res.status(201).json(data)
 
@@ -45,23 +21,24 @@ router.post('/create', (req,res) =>{
 
 
 //Retrive
-router.get('/retrieve', (req,res) => {
+// ###################  o correto seria retrieve
+router.get('/retrive', (req,res) => {
 
   const query = { }
 
-  UsuarioModel.find(query, function(err, data)  {
+  ProdutoModel.find(query, function(err, data)  {
     if (err) return res.status(500).json(err)
       return res.status(200).json(data)
 
   })
 })
 
-router.get('/retrieve/:_id', (req,res) => {
+router.get('/retrive/:_id', (req,res) => {
   
   const _id = req.params._id
   const query = { _id: _id }
 
-  UsuarioModel.findOne(query, function(err, data)  {
+  ProdutoModel.findOne(query, function(err, data)  {
     if (err) return res.status(500).json(err)
       return res.status(200).json(data)
 
@@ -79,7 +56,7 @@ router.post('/update', (req,res) =>{
   delete body._id 
   
 
-  UsuarioModel.update(query, body, (err, data) => {
+  ProdutoModel.update(query, body, (err, data) => {
     if (err) return res.status(500).json(err)
       return res.status(200).json(data)
 
@@ -93,7 +70,7 @@ router.get('/delete/:_id', (req,res) => {
   const _id = req.params._id
   const query = { _id: _id }
 
-  UsuarioModel.remove(query, function(err, data)  {
+  ProdutoModel.remove(query, function(err, data)  {
     if (err) return res.status(500).json(err)
       return res.status(200).json(data)
 
