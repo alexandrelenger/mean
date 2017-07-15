@@ -7,7 +7,8 @@ app.controller('ProdutoController', ProdutoController)
 function ProdutoController($http, $stateParams, $state){
 
 	var vm = this
-
+   const token = localStorage.getItem('JwtToken')
+   
     vm.Produto = {}    
  	vm.Produtos = []
 
@@ -16,7 +17,8 @@ function ProdutoController($http, $stateParams, $state){
    vm.ListarUm = function(id) {
       $http({
          method: 'GET',
-         url: '/api/v1/produto/retrive/' + id
+         url: '/api/v1/produto/retrive/' + id,
+          headers: { Authorization: token }
       }).then(function(ret){
          vm.Produto = ret.data
       })
@@ -31,7 +33,8 @@ function ProdutoController($http, $stateParams, $state){
 
    	$http({
    		method: 'GET',
-   		url: '/api/v1/produto/retrive'
+   		url: '/api/v1/produto/retrive',
+          headers: { Authorization: token }
 
    	}).then(function(ret){
    		vm.Produtos = ret.data
@@ -48,6 +51,7 @@ function ProdutoController($http, $stateParams, $state){
          $http({
             method: 'POST',
             url: '/api/v1/produto/update',
+             headers: { Authorization: token },
             data: vm.Produto
          }).then(function(ret){
             vm.ListarTodos()
@@ -58,6 +62,7 @@ function ProdutoController($http, $stateParams, $state){
          $http({
             method: 'POST',
             url: '/api/v1/produto/create',
+             headers: { Authorization: token },
             data: vm.Produto
          }).then(function(ret){
             vm.ListarTodos()
@@ -71,7 +76,8 @@ function ProdutoController($http, $stateParams, $state){
    	if(confirm('Atenção\nDeseja remover esse registro?')){
 	   	$http({
 	   		method: 'GET',
-	   		url: '/api/v1/produto/delete/' + id
+	   		url: '/api/v1/produto/delete/' + id,
+             headers: { Authorization: token }
 
 	   	}).then(function(ret){
 	   		vm.ListarTodos()
@@ -84,7 +90,8 @@ function ProdutoController($http, $stateParams, $state){
    vm.Atualizar = function(id){   	
 	   	$http({
 	   		method: 'GET',
-	   		url: '/api/v1/produto/update/' + id
+	   		url: '/api/v1/produto/update/' + id,
+             headers: { Authorization: token }
 
 	   	}).then(function(ret){
 	   		vm.ListarTodos()

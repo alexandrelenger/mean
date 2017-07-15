@@ -12,13 +12,16 @@ function LoginController($http, $state){
 
       $http({
       	method: 'POST',
-      	url: '/api/v1/usuario/login',
+      	url: '/api/v1/login',
       	data: vm.Usuario
 
       }).then(function(retorno){
 
-      	if( retorno.data.error === false){
-      		$state.go('home')
+      	if( retorno.data.error === false){      		
+          console.log(retorno)
+          localStorage.setItem('JwtToken', retorno.data.token)
+          $state.go('home')
+          
       	}else{
       		sweetAlert("Atenção!", retorno.data.message, "error");
       	}      	

@@ -2,6 +2,37 @@
 
 var app = angular.module('AppChamados',['ui.router'] )
 
+app.factory('Parametros', function(){
+  return {
+    nome_sistema : 'Curso MEAN Stack',
+
+    administrador: {
+      menu: {
+
+        cadastros: [{
+          link: '',
+          descricao: 'Clientes'
+        },
+        {
+          link: '#!/usuario',
+          descricao: 'Usuários'
+        }],
+
+        relatorios: [{
+          link: '',
+          descricao: 'Clientes'
+        },
+        {
+          link: '#!/usuario',
+          descricao: 'Usuários'
+        }]
+      }
+    }
+
+  }
+})
+
+//Rotas da Aplicação
 app.config(myConfig)
 
 function myConfig($stateProvider, $urlRouterProvider){
@@ -14,10 +45,12 @@ function myConfig($stateProvider, $urlRouterProvider){
   		'': {
   			templateUrl: './views/home.html',
   			controller: 'HomeController',
-            controllerAs: 'vm'
+        controllerAs: 'vm'
   		},
   		'menu' :{
-  			templateUrl: './views/menu.html'
+  			templateUrl: './views/menu.html',
+        controller: 'MenuController',
+        controllerAs: 'vm'
   		}
   	}
 
@@ -32,7 +65,9 @@ function myConfig($stateProvider, $urlRouterProvider){
         controllerAs: 'vm'
       },
       'menu' :{
-        templateUrl: './views/menu.html'
+        templateUrl: './views/menu.html',
+        controller: 'MenuController',
+        controllerAs: 'vm'
       }
     }
 
@@ -47,7 +82,9 @@ function myConfig($stateProvider, $urlRouterProvider){
         controllerAs: 'vm'
       },
       'menu' :{
-        templateUrl: './views/menu.html'
+        templateUrl: './views/menu.html',
+        controller: 'MenuController',
+        controllerAs: 'vm'
       }
     }
 
@@ -63,7 +100,9 @@ function myConfig($stateProvider, $urlRouterProvider){
         controllerAs: 'vm'
       },
       'menu' :{
-        templateUrl: './views/menu.html'
+        templateUrl: './views/menu.html',
+        controller: 'MenuController',
+        controllerAs: 'vm'
       }
     }
 
